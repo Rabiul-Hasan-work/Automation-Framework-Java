@@ -1,14 +1,16 @@
+package drivers.strategies;
+
 public class DriverStrategyImplementer {
 
     public static DriverStrategy chooseStrategy(String strategy) {
         switch (strategy) {
-            case "Chrome":
+            case "drivers.strategies.Chrome":
                 return new Chrome();
 
-            case "PhantomJs":
+            case "drivers.strategies.PhantomJs":
                 return new PhantomJs();
 
-            case "FireFox":
+            case "drivers.strategies.FireFox":
                 return new FireFox();
 
             default:

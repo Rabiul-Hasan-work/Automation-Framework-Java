@@ -1,3 +1,5 @@
+package utils;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,14 +12,14 @@ public class FrameworkProperties {
     public String getProperty(String key) {
         try {
             Properties properties = new Properties();
-            String propFileName = "framework.properties";
+            String propFileName = Constants.PROP_FILE_NAME;
 
             inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 
             if (inputStream != null)
                 properties.load((inputStream));
             else
-                throw new FileNotFoundException("The Property file has not been found");
+                throw new FileNotFoundException(Constants.FILE_NOT_FOUND_EXCEPTION_MESSAGE);
 
             String propertyValue = properties.getProperty(key);
             this.result = propertyValue;
