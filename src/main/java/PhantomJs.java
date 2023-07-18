@@ -1,0 +1,16 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class PhantomJs implements DriverStrategy {
+    public WebDriver setStrategy() {
+        System.setProperty("phantomjs.binary.path", "src/main/resources/phantomjs.exe");
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+
+        // Set other desired capabilities if needed
+
+        WebDriver driver = new PhantomJSDriver(desiredCapabilities);
+
+        return driver;
+    }
+}
