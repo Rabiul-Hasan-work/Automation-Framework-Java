@@ -7,5 +7,4 @@ public class Constants {
     public static final String FIREFOX = "drivers.strategies.FireFox";
     public static final String PHANTOMJS = "drivers.strategies.PhantomJs";
     public static final int TIMEOUT = 15;
-    public static final String CART_QUANTITY = "1 Product";
 }

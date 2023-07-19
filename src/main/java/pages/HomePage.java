@@ -31,7 +31,7 @@ public class HomePage {
 
     @FindBy(css = "#cartModal > div > div > div.modal-body > p:nth-child(2) > a")
     private WebElement viewCart;
-    @FindBy(css = "")
+    @FindBy(css = "#cart_info_table > thead > tr > td.image")
     private WebElement cartTable;
 
     @FindBy(css = "#do_action > div.container > div > div > a")
@@ -39,6 +39,9 @@ public class HomePage {
 
     @FindBy(css = "#cartModal > div > div > div.modal-footer > button")
     private WebElement continueShoppingButton;
+    @FindBy(css = "#header > div > div > div > div.col-sm-4 > div > a > img")
+    private WebElement homePageIcon;
+
 
     public void addFirstElementToCart() {
         addToCartFirst.click();
@@ -47,10 +50,12 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.elementToBeClickable(continueShoppingButton));
         continueShoppingButton.click();
-        if(cart.getText().contains(Constants.CART_QUANTITY))
+        cart.click();
+        if(cartTable.isDisplayed())
             System.out.println("Cart has been updated");
         else
             System.out.println("Cart has not been updated");
+        homePageIcon.click();
     }
 
     public void addSecondElementToCart() {
