@@ -39,8 +39,10 @@ public class HomePage {
     private WebElement homePageIcon;
     @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(3) > div > div.single-products > div.productinfo.text-center")
     private WebElement firstElement;
-    @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(4) > div > div.single-products > div.productinfo.text-center")
+    @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(4) > div")
     private WebElement secondElement;
+    @FindBy(css = "#checkoutModal > div > div > div.modal-footer > button")
+    private WebElement continueToCart;
 
 
     public void addFirstElementToCart() {
@@ -70,5 +72,6 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.elementToBeClickable(proceedToCheckButton));
         proceedToCheckButton.click();
+        continueToCart.click();
     }
 }

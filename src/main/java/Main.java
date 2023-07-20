@@ -1,6 +1,9 @@
 import drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;
+import pages.CheckoutPage;
 import pages.HomePage;
+import pages.SignInAndSignOutPage;
+import utils.Constants;
 import utils.FrameworkProperties;
 
 public class Main {
@@ -11,6 +14,16 @@ public class Main {
         driver.get("https://www.automationexercise.com/");
         HomePage homePage = new HomePage();
         homePage.addFirstElementToCart();
-        homePage.addSecondElementToCart();
+//        homePage.addSecondElementToCart();
+
+        SignInAndSignOutPage signInAndSignOutPage = new SignInAndSignOutPage();
+        signInAndSignOutPage.loginRegisterPage();
+        signInAndSignOutPage.checkLoginRegisterPageStatus();
+        signInAndSignOutPage.login(frameworkProperties.getProperty(Constants.EMAIL), frameworkProperties.getProperty(Constants.PASSWORD));
+
+        CheckoutPage checkoutPage = new CheckoutPage();
+        checkoutPage.goToCheckout();
+
+
     }
 }
