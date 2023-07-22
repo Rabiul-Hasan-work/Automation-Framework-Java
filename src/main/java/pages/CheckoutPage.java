@@ -32,17 +32,27 @@ public class CheckoutPage {
     private WebElement orderConfirmationMessage;
     @FindBy(css = "#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(3) > a")
     private WebElement cart;
+    @FindBy(css = "#payment-form > div:nth-child(2) > div > input")
+    private WebElement NameOnCardField;
+    @FindBy(css = "#payment-form > div:nth-child(3) > div > input")
+    private WebElement cardNumberField;
+    @FindBy(css = "#payment-form > div:nth-child(4) > div.col-sm-4.form-group.cvc > input")
+    private WebElement cvcField;
+    @FindBy(css = "#payment-form > div:nth-child(4) > div:nth-child(2) > input")
+    private WebElement expirationMMField;
+    @FindBy(css = "#payment-form > div:nth-child(4) > div:nth-child(3) > input")
+    private WebElement expirationYYField;
 
     public Boolean checkTitle(String title) {
         return pageTittle.getText().equals(title);
     }
 
     public void goToCheckout() {
+        cart.click();
         int timeoutInSeconds = Constants.TIMEOUT;
         Duration timeout = Duration.ofSeconds(timeoutInSeconds);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(ExpectedConditions.elementToBeClickable(proceedToCheckoutButton));
-        cart.click();
         proceedToCheckoutButton.click();
     }
 
@@ -54,7 +64,12 @@ public class CheckoutPage {
         placeOrderButton.click();
     }
 
-    public void payAndConfirm() {
+    public void payAndConfirm(String NameOnCard, String cardNumber, String cvc, String expirationMM, String expirationYY) {
+        NameOnCardField.sendKeys(NameOnCard);
+        cardNumberField.sendKeys(cardNumber);
+        cvcField.sendKeys(cvc);
+        expirationMMField.sendKeys(expirationMM);
+        expirationYYField.sendKeys(expirationYY);
         int timeoutInSeconds = Constants.TIMEOUT;
         Duration timeout = Duration.ofSeconds(timeoutInSeconds);
         WebDriverWait wait = new WebDriverWait(driver, timeout);

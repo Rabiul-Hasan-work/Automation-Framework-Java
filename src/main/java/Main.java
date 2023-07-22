@@ -14,7 +14,7 @@ public class Main {
         driver.get("https://www.automationexercise.com/");
         HomePage homePage = new HomePage();
         homePage.addFirstElementToCart();
-//        homePage.addSecondElementToCart();
+        homePage.addSecondElementToCart();
 
         SignInAndSignOutPage signInAndSignOutPage = new SignInAndSignOutPage();
         signInAndSignOutPage.loginRegisterPage();
@@ -23,6 +23,10 @@ public class Main {
 
         CheckoutPage checkoutPage = new CheckoutPage();
         checkoutPage.goToCheckout();
+        checkoutPage.placeOrder();
+        checkoutPage.payAndConfirm(frameworkProperties.getProperty(Constants.NAME_ON_CARD), frameworkProperties.getProperty(Constants.CARD_NUMBER), frameworkProperties.getProperty(Constants.CVC), frameworkProperties.getProperty(Constants.EXPIRATION_MM), frameworkProperties.getProperty(Constants.EXPIRATION_YY));
+        if (checkoutPage.checkFinalStatus())
+            System.out.println("Test case completed!");
 
 
     }

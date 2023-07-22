@@ -25,7 +25,7 @@ public class SignInAndSignOutPage {
     private WebElement emailLogInField;
     @FindBy(css = "#form > div > div > div.col-sm-4.col-sm-offset-1 > div > form > input[type=password]:nth-child(3)")
     private WebElement password;
-    @FindBy(css = "#form > div > div > div.col-sm-4.col-sm-offset-1 > div > form > button")
+    @FindBy(xpath = "//*[@id=\"form\"]/div/div/div[1]/div/form/button")
     private WebElement LoginButton;
     @FindBy(css = "#form > div > div > div:nth-child(3) > div > form > input[type=text]:nth-child(2)")
     private WebElement NameSignUp;

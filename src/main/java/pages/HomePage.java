@@ -23,7 +23,7 @@ public class HomePage {
 
     @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(3) > div > div.single-products > div.productinfo.text-center > a")
     private WebElement addToCartFirst;
-    @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(4) > div > div.single-products > div.productinfo.text-center > a")
+    @FindBy(xpath = "//div[3]//div[1]//div[1]//div[2]//div[1]//a[1]")
     private WebElement addToCartSecond;
     @FindBy(css = "#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(3) > a")
     private WebElement cart;
@@ -33,13 +33,13 @@ public class HomePage {
     private WebElement cartTable;
     @FindBy(css = "#do_action > div.container > div > div > a")
     private WebElement proceedToCheckButton;
-    @FindBy(css = "#cartModal > div > div > div.modal-footer > button")
+    @FindBy(xpath = "//button[@class='btn btn-success close-modal btn-block']")
     private WebElement continueShoppingButton;
     @FindBy(css = "#header > div > div > div > div.col-sm-4 > div > a > img")
     private WebElement homePageIcon;
     @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(3) > div > div.single-products > div.productinfo.text-center")
     private WebElement firstElement;
-    @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(4) > div")
+    @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(4) > div > div.single-products > div.productinfo.text-center")
     private WebElement secondElement;
     @FindBy(css = "#checkoutModal > div > div > div.modal-footer > button")
     private WebElement continueToCart;
@@ -66,7 +66,8 @@ public class HomePage {
         Actions hover = new Actions(driver);
         hover.moveToElement(secondElement).build().perform();
         addToCartSecond.click();
-        viewCart.click();
+        continueShoppingButton.click();
+        cart.click();
         int timeoutInSeconds = Constants.TIMEOUT;
         Duration timeout = Duration.ofSeconds(timeoutInSeconds);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
