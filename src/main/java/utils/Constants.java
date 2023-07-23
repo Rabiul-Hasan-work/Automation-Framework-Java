@@ -16,4 +16,7 @@ public class Constants {
     public static final String CVC = "cvc";
     public static final String EXPIRATION_MM = "expirationMM";
     public static final String EXPIRATION_YY = "expirationYY";
+    public static final String URL = "https://www.automationexercise.com/";
+    public static final String USERNAME = "username";
+    public static final String BROWSER = "browser";
 }

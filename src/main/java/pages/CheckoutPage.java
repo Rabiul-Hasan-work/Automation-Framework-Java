@@ -42,6 +42,8 @@ public class CheckoutPage {
     private WebElement expirationMMField;
     @FindBy(css = "#payment-form > div:nth-child(4) > div:nth-child(3) > input")
     private WebElement expirationYYField;
+    @FindBy(css = "#cart_info_table > thead > tr > td.image")
+    private WebElement summaryProduct;
 
     public Boolean checkTitle(String title) {
         return pageTittle.getText().equals(title);

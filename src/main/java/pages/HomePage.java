@@ -23,7 +23,7 @@ public class HomePage {
 
     @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(3) > div > div.single-products > div.productinfo.text-center > a")
     private WebElement addToCartFirst;
-    @FindBy(xpath = "//div[3]//div[1]//div[1]//div[2]//div[1]//a[1]")
+    @FindBy(css = "body > section:nth-child(3) > div > div > div.col-sm-9.padding-right > div.features_items > div:nth-child(4) > div > div.single-products > div.product-overlay > div > a")
     private WebElement addToCartSecond;
     @FindBy(css = "#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(3) > a")
     private WebElement cart;
@@ -43,6 +43,22 @@ public class HomePage {
     private WebElement secondElement;
     @FindBy(css = "#checkoutModal > div > div > div.modal-footer > button")
     private WebElement continueToCart;
+    @FindBy(css = "#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(4) > a")
+    private WebElement logInButton;
+    @FindBy(css = "#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a")
+    private WebElement userName;
+
+    public void clickLogIn() {
+        int timeoutInSeconds = Constants.TIMEOUT;
+        Duration timeout = Duration.ofSeconds(timeoutInSeconds);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        wait.until(ExpectedConditions.elementToBeClickable(logInButton));
+        logInButton.click();
+    }
+
+    public String getUserName() {
+        return userName.getText();
+    }
 
 
     public void addFirstElementToCart() {
