@@ -86,4 +86,8 @@ public class CheckoutPage {
         wait.until(ExpectedConditions.elementToBeClickable(orderConfirmationMessage));
         return orderConfirmationMessage.getText().contains(Constants.COMPLETE_ORDER);
     }
+
+    public String getSummaryProductString() {
+        return summaryProduct.getText();
+    }
 }

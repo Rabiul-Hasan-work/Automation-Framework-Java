@@ -19,4 +19,5 @@ public class Constants {
     public static final String URL = "https://www.automationexercise.com/";
     public static final String USERNAME = "username";
     public static final String BROWSER = "browser";
+    public static final String CART_QUANTITY_TEST = "Item";
 }

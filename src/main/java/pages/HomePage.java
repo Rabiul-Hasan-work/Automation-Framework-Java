@@ -78,6 +78,23 @@ public class HomePage {
         homePageIcon.click();
     }
 
+    public void addTestUnitFirstELement() {
+        Actions hover = new Actions(driver);
+        hover.moveToElement(firstElement).build().perform();
+        addToCartFirst.click();
+        int timeoutInSeconds = Constants.TIMEOUT;
+        Duration timeout = Duration.ofSeconds(timeoutInSeconds);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        wait.until(ExpectedConditions.elementToBeClickable(continueShoppingButton));
+        continueShoppingButton.click();
+        cart.click();
+        if(cartTable.isDisplayed())
+            System.out.println("Cart has been updated");
+        else
+            System.out.println("Cart has not been updated");
+//        homePageIcon.click();
+    }
+
     public void addSecondElementToCart() {
         Actions hover = new Actions(driver);
         hover.moveToElement(secondElement).build().perform();
