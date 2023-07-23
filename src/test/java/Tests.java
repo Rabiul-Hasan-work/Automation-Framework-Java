@@ -12,6 +12,7 @@ import utils.Constants;
 import utils.FrameworkProperties;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Tests {
@@ -54,7 +55,7 @@ public class Tests {
         checkoutPage.goToCheckout();
         checkoutPage.placeOrder();
         checkoutPage.payAndConfirm(frameworkProperties.getProperty(Constants.NAME_ON_CARD), frameworkProperties.getProperty(Constants.CARD_NUMBER), frameworkProperties.getProperty(Constants.CVC), frameworkProperties.getProperty(Constants.EXPIRATION_MM), frameworkProperties.getProperty(Constants.EXPIRATION_YY));
-        assertEquals(true, checkoutPage.checkFinalStatus().booleanValue());
+        assertTrue(checkoutPage.checkFinalStatus());
     }
 
     @AfterClass
