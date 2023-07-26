@@ -1,4 +1,4 @@
-package utils;
+package automation.utils;
 
 import automation.drivers.DriverSingleton;
 import org.openqa.selenium.OutputType;

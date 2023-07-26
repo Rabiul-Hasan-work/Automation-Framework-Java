@@ -2,26 +2,26 @@ package automation.glue;
 
 import automation.config.AutomationFrameworkConfiguration;
 import automation.drivers.DriverSingleton;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.RequiredArgsConstructor;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import pages.CheckoutPage;
-import pages.HomePage;
-import pages.ProductPage;
-import pages.SignInAndSignOutPage;
-import utils.ConfigurationProperties;
-import utils.Constants;
+import automation.pages.CheckoutPage;
+import automation.pages.HomePage;
+import automation.pages.ProductPage;
+import automation.pages.SignInAndSignOutPage;
+import automation.utils.ConfigurationProperties;
+import automation.utils.Constants;
 
 import static junit.framework.TestCase.assertEquals;
 
 @ContextConfiguration(classes = AutomationFrameworkConfiguration.class)
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class StepDefinition {
     private WebDriver driver;
     private HomePage homePage;
@@ -29,15 +29,17 @@ public class StepDefinition {
     private CheckoutPage checkoutPage;
     private ProductPage productPage;
 
+    private DriverSingleton driverSingleton;
 
-//    @Autowired
-//    ConfigurationProperties configurationProperties;
 
-    private final ConfigurationProperties configurationProperties;
+    @Autowired
+    ConfigurationProperties configurationProperties;
+
+//    private final ConfigurationProperties configurationProperties;
 
     @Before
     public void initializeObjects() {
-        DriverSingleton.getInstance(configurationProperties.getBrowser());
+        driverSingleton = DriverSingleton.getInstance(configurationProperties.getBrowser());
         homePage = new HomePage();
         signInAndSignOutPage = new SignInAndSignOutPage();
         checkoutPage = new CheckoutPage();
@@ -45,7 +47,7 @@ public class StepDefinition {
 
     @Given("^I go to the website")
     public void i_go_to_the_website() {
-        driver = DriverSingleton.getDriver();
+        driver = driverSingleton.getDriver();
         driver.get(Constants.URL);
     }
 

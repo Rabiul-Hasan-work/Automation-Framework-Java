@@ -1,10 +1,10 @@
 import automation.drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;
-import pages.CheckoutPage;
-import pages.HomePage;
-import pages.SignInAndSignOutPage;
-import utils.Constants;
-import utils.FrameworkProperties;
+import automation.pages.CheckoutPage;
+import automation.pages.HomePage;
+import automation.pages.SignInAndSignOutPage;
+import automation.utils.Constants;
+import automation.utils.FrameworkProperties;
 
 public class Main {
     public static void main(String[] args) {

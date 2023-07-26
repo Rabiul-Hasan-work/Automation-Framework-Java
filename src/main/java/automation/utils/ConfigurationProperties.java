@@ -1,4 +1,4 @@
-package utils;
+package automation.utils;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-@PropertySource("/framework.properties")
+@PropertySource(value = "classpath:framework.properties")
 public class ConfigurationProperties {
 
     @Value("${browser}")
@@ -26,7 +26,7 @@ public class ConfigurationProperties {
     private String cvc;
     @Value("${expirationMM}")
     private String expirationMM;
-    @Value("${expirationYY")
+    @Value("${expirationYY}")
     private String expirationYY;
     @Value("${username}")
     private String username;

@@ -1,4 +1,4 @@
-package pages;
+package automation.pages;
 
 import automation.drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;

@@ -1,6 +1,4 @@
-package utils;
-
-import java.io.File;
+package automation.utils;
 
 public class Constants {
     public static final String PROP_FILE_NAME = "framework.properties";
