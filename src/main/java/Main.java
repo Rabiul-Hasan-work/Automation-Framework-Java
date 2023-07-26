@@ -1,4 +1,4 @@
-import drivers.DriverSingleton;
+import automation.drivers.DriverSingleton;
 import org.openqa.selenium.WebDriver;
 import pages.CheckoutPage;
 import pages.HomePage;

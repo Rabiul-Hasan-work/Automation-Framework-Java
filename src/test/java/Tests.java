@@ -1,4 +1,4 @@
-import drivers.DriverSingleton;
+import automation.drivers.DriverSingleton;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;

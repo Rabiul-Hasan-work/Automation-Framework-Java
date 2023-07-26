@@ -1,4 +1,4 @@
-package drivers.strategies;
+package automation.drivers.strategies;
 import utils.Constants;
 
 public class DriverStrategyImplementer {
