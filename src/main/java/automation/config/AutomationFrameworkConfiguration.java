@@ -4,7 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("automation")
+@ComponentScan(basePackages = "automation")
 public class AutomationFrameworkConfiguration {
     public AutomationFrameworkConfiguration() {
 

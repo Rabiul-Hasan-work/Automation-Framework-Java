@@ -30,6 +30,9 @@ public class StepDefinition {
     private ProductPage productPage;
 
 
+//    @Autowired
+//    ConfigurationProperties configurationProperties;
+
     private final ConfigurationProperties configurationProperties;
 
     @Before
