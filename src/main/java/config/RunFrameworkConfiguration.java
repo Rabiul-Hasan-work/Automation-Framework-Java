@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@ComponentScan("main")
+@ComponentScan("java")
 public class RunFrameworkConfiguration {
     public RunFrameworkConfiguration() {
 

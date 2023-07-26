@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Component
-@PropertySource("framework.properties")
+@PropertySource("/framework.properties")
 public class ConfigurationProperties {
 
     @Value("${browser}")
