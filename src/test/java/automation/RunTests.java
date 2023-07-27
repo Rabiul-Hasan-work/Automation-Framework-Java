@@ -8,7 +8,7 @@ import io.cucumber.picocontainer.PicoFactory;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-reports"},
+        plugin = {"pretty", "html:target/cucumber-reports.html"},
         features = "src/main/resources/features",
         objectFactory = PicoFactory.class // Use PicoFactory for dependency injection
 )

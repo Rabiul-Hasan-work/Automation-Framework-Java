@@ -21,7 +21,7 @@ import automation.utils.Constants;
 import static junit.framework.TestCase.assertEquals;
 
 @ContextConfiguration(classes = AutomationFrameworkConfiguration.class)
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class StepDefinition {
     private WebDriver driver;
     private HomePage homePage;
@@ -32,14 +32,14 @@ public class StepDefinition {
     private DriverSingleton driverSingleton;
 
 
-    @Autowired
-    ConfigurationProperties configurationProperties;
+//    @Autowired
+//    ConfigurationProperties configurationProperties;
 
-//    private final ConfigurationProperties configurationProperties;
+    private final ConfigurationProperties configurationProperties;
 
     @Before
     public void initializeObjects() {
-        driverSingleton = DriverSingleton.getInstance(configurationProperties.getBrowser());
+        driver = DriverSingleton.getInstance(configurationProperties.getBrowser()).getDriver();
         homePage = new HomePage();
         signInAndSignOutPage = new SignInAndSignOutPage();
         checkoutPage = new CheckoutPage();
