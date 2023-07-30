@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import automation.pages.CheckoutPage;
 import automation.pages.HomePage;
@@ -21,7 +23,8 @@ import automation.utils.Constants;
 import static junit.framework.TestCase.assertEquals;
 
 @ContextConfiguration(classes = AutomationFrameworkConfiguration.class)
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
+@Service
 public class StepDefinition {
     private WebDriver driver;
     private HomePage homePage;
@@ -37,9 +40,15 @@ public class StepDefinition {
 
     private final ConfigurationProperties configurationProperties;
 
+//    @Autowired
+    public StepDefinition(ConfigurationProperties configurationProperties) {
+        this.configurationProperties = configurationProperties;
+    }
+
     @Before
     public void initializeObjects() {
-        driver = DriverSingleton.getInstance(configurationProperties.getBrowser()).getDriver();
+        DriverSingleton.getInstance(configurationProperties.getBrowser());
+        driver = DriverSingleton.getDriver();
         homePage = new HomePage();
         signInAndSignOutPage = new SignInAndSignOutPage();
         checkoutPage = new CheckoutPage();
@@ -47,7 +56,7 @@ public class StepDefinition {
 
     @Given("^I go to the website")
     public void i_go_to_the_website() {
-        driver = driverSingleton.getDriver();
+        driver = DriverSingleton.getDriver();
         driver.get(Constants.URL);
     }
 
