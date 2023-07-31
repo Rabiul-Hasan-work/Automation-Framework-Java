@@ -6,10 +6,7 @@ import automation.pages.CheckoutPage;
 import automation.pages.HomePage;
 import automation.pages.ProductPage;
 import automation.pages.SignInAndSignOutPage;
-import automation.utils.ConfigurationProperties;
-import automation.utils.Constants;
-import automation.utils.TestCases;
-import automation.utils.Utils;
+import automation.utils.*;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -60,6 +57,8 @@ public class StepDefinition {
         checkoutPage = new CheckoutPage();
         TestCases[] tests = TestCases.values();
         test = report.startTest(tests[Utils.testCount].getTestName());
+        Log.getLogData(Log.class.getName());
+        Log.startTest(tests[Utils.testCount].getTestName());
         Utils.testCount++;
     }
 
@@ -67,6 +66,7 @@ public class StepDefinition {
     public void iGoToTheWebsite() {
         driver = DriverSingleton.getDriver();
         driver.get(Constants.URL);
+        Log.info("INFO: Navigating to " + Constants.URL);
         test.log(LogStatus.PASS, "Navigating to " + Constants.URL);
 
     }
@@ -87,11 +87,14 @@ public class StepDefinition {
 
     @Then("^I can log into the website")
     public void iCanLogIntoTheWebsite() {
-        if(configurationProperties.getUsername().equals(homePage.getUserName()))
+        if (configurationProperties.getUsername().equals(homePage.getUserName())) {
+            Log.info("INFO: The authentication is successful.");
             test.log(LogStatus.PASS, "The authentication is successful.");
-        else
+        } else {
+            Log.error("ERROR: Authentication is not successful.");
             test.log(LogStatus.FAIL, "Authentication is not successful.");
-        assertEquals(configurationProperties.getUsername(),homePage.getUserName());
+        }
+        assertEquals(configurationProperties.getUsername(), homePage.getUserName());
     }
 
     @When("I add element to the cart")
@@ -122,12 +125,16 @@ public class StepDefinition {
 
     @Then("The elements are bought")
     public void theElementsAreBought() {
-        if(checkoutPage.checkFinalStatus())
-            test.log(LogStatus.PASS, "The two items are bought.");
-        else
-            test.log(LogStatus.FAIL, "The items weren't bought");
+        if (checkoutPage.checkFinalStatus()) {
+            Log.info("INFO: The items are bought.");
+            test.log(LogStatus.PASS, "The items are bought.");
+        } else {
+            Log.error("ERROR: The items weren't bought.");
+            test.log(LogStatus.FAIL, "The items weren't bought.");
+        }
         assertTrue(checkoutPage.checkFinalStatus());
     }
+
     @After
     public void closeObjects(){
         report.endTest(test);
