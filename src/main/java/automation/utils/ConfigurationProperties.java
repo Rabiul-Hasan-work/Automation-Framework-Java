@@ -2,13 +2,11 @@ package automation.utils;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-//@Getter
-//@Setter
+
 @Getter
 @Setter
 @Service
@@ -17,11 +15,6 @@ import org.springframework.stereotype.Service;
 public class ConfigurationProperties {
 
     private String browser = "drivers.strategies.Chrome";
-//    @Value("${browser}")
-//    private String browser;
-//    @Value("${email}")
-//    private String email;
-
     private String email = "rabiulworkapps@gmail.com";
     private String password = "setara9@";
     private String NameOncard = "Your Name";
@@ -31,4 +24,9 @@ public class ConfigurationProperties {
     private String expirationYY = "25";
     private String username = "Logged in as Naim Hasan";
 
+    //TODO find a way to use @value annotation without using hard coded string
+//    @Value("${browser}")
+//    private String browser;
+//    @Value("${email}")
+//    private String email;
 }

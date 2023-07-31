@@ -2,23 +2,20 @@ package automation.glue;
 
 import automation.config.AutomationFrameworkConfiguration;
 import automation.drivers.DriverSingleton;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import lombok.RequiredArgsConstructor;
-import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
 import automation.pages.CheckoutPage;
 import automation.pages.HomePage;
 import automation.pages.ProductPage;
 import automation.pages.SignInAndSignOutPage;
 import automation.utils.ConfigurationProperties;
 import automation.utils.Constants;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
 
 import static junit.framework.TestCase.assertEquals;
 
