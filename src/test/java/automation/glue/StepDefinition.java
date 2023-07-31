@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 @ContextConfiguration(classes = AutomationFrameworkConfiguration.class)
@@ -52,24 +53,51 @@ public class StepDefinition {
     }
 
     @Given("^I go to the website")
-    public void i_go_to_the_website() {
+    public void iGoToTheWebsite() {
         driver = DriverSingleton.getDriver();
         driver.get(Constants.URL);
     }
 
     @When("^I click on Sign In button")
-    public void i_click_on_sign_in_button() {
+    public void iClickOnSignInButton() {
         homePage.clickLogIn();
     }
 
     @And("^I specify my credentials and click Login")
-    public void i_specify_my_credentials_and_click_login() {
+    public void iSpecifyMyCredentialsAndClickLogin() {
         signInAndSignOutPage.login(configurationProperties.getEmail(), configurationProperties.getPassword());
     }
 
     @Then("^I can log into the website")
-    public void i_can_log_into_the_website() {
+    public void iCanLogIntoTheWebsite() {
         assertEquals(configurationProperties.getUsername(),homePage.getUserName());
+    }
+
+    @When("I add element to the cart")
+    public void iAddElementToTheCart() {
+        homePage.addTestUnitFirstELement();
+    }
+
+    @And("I proceed to checkout")
+    public void iProceedToCheckout() {
+        checkoutPage.goToCheckout();
+    }
+
+    @And("I confirm address, place order and pay and confirm order")
+    public void iConfirmAddressPlaceOrderAndPayAndConfirmOrder() {
+        checkoutPage.goToCheckout();
+        checkoutPage.placeOrder();
+        checkoutPage.payAndConfirm(
+                configurationProperties.getNameOncard(),
+                configurationProperties.getCardNumber(),
+                configurationProperties.getCvc(),
+                configurationProperties.getExpirationMM(),
+                configurationProperties.getExpirationYY());
+    }
+
+    @Then("The elements are bought")
+    public void theElementsAreBought() {
+        assertTrue(checkoutPage.checkFinalStatus());
     }
 
 }
