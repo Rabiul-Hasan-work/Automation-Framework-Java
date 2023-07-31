@@ -22,7 +22,7 @@ public class CheckoutPage {
     @FindBy(css = "head > title")
     private WebElement pageTittle;
 
-    @FindBy(css = "#do_action > div.container > div > div > a")
+    @FindBy(xpath = "//a[@class='btn btn-default check_out']")
     private WebElement proceedToCheckoutButton;
     @FindBy(css = "#cart_items > div > div:nth-child(7) > a")
     private WebElement placeOrderButton;
@@ -30,7 +30,7 @@ public class CheckoutPage {
     private WebElement payAndConfirmOderButton;
     @FindBy(css = "#form > div > div > div > p")
     private WebElement orderConfirmationMessage;
-    @FindBy(css = "#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(3) > a")
+    @FindBy(xpath = "/html[1]/body[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[3]/a[1]")
     private WebElement cart;
     @FindBy(css = "#payment-form > div:nth-child(2) > div > input")
     private WebElement NameOnCardField;
